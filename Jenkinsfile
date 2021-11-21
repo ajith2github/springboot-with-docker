@@ -1,6 +1,9 @@
 
 node('agent1') {
 
+    properties([
+            pipelineTriggers([pollSCM('H/1 * * * 1-5')])
+        ])
     stage("Git Clone"){
 
         git credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/rahulwagh/spring-boot-docker.git'
